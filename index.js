@@ -8,7 +8,7 @@ const routes = require('./routes');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocs = require('./docs/index');
 
-app.use(cors())
+
 app.use(express.json());
 
 
