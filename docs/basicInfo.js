@@ -7,7 +7,7 @@ module.exports = {
   },
   servers: [
     {
-      url: "https://nombre-proyecto.onrender.com",
+      url: "https://ejercico-db-mongoose-swagger-render-e8o0.onrender.com",
       description: "Servidor en Render"
     }
   ]
