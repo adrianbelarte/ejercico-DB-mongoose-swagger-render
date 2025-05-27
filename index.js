@@ -10,12 +10,9 @@ const swaggerDocs = require('./docs/index');
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.redirect('/api-docs');
-});
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
-app.use('/tasks', routes); // opcional: cambiar esto si tus rutas están todas en /tasks
+app.use('/tasks', routes); 
 
 dbConnection();
 
