@@ -1,6 +1,6 @@
 module.exports = {
   paths: {
-    "/create": {
+    "/tasks/create": {
       post: {
         tags: ["Tasks"],
         summary: "Crear tarea",
@@ -10,9 +10,8 @@ module.exports = {
             "application/json": {
               schema: {
                 type: "object",
-                required: ["title"],
                 properties: {
-                  title: { type: "string", example: "Estudiar Swagger" }
+                  title: { type: "string" }
                 }
               }
             }
@@ -20,51 +19,31 @@ module.exports = {
         },
         responses: {
           201: {
-            description: "Tarea creada correctamente",
-            content: {
-              "application/json": {
-                schema: { $ref: "#/components/schemas/Task" }
-              }
-            }
-          },
-          400: {
-            description: "Error en los datos enviados"
+            description: "Tarea creada"
           }
         }
       }
     },
-    "/": {
+    "/tasks/": {
       get: {
         tags: ["Tasks"],
         summary: "Obtener todas las tareas",
         responses: {
           200: {
-            description: "Lista de tareas",
-            content: {
-              "application/json": {
-                schema: {
-                  type: "array",
-                  items: { $ref: "#/components/schemas/Task" }
-                }
-              }
-            }
-          },
-          500: {
-            description: "Error del servidor"
+            description: "Lista de tareas"
           }
         }
       }
     },
-    "/id/{_id}": {
+    "/tasks/id/{_id}": {
       put: {
         tags: ["Tasks"],
-        summary: "Actualizar el título de una tarea",
+        summary: "Actualizar título de la tarea",
         parameters: [
           {
             name: "_id",
             in: "path",
             required: true,
-            description: "ID de la tarea a actualizar",
             schema: { type: "string" }
           }
         ],
@@ -74,9 +53,8 @@ module.exports = {
             "application/json": {
               schema: {
                 type: "object",
-                required: ["title"],
                 properties: {
-                  title: { type: "string", example: "Tarea actualizada" }
+                  title: { type: "string" }
                 }
               }
             }
@@ -84,39 +62,24 @@ module.exports = {
         },
         responses: {
           200: {
-            description: "Tarea actualizada correctamente",
-            content: {
-              "application/json": {
-                schema: { $ref: "#/components/schemas/Task" }
-              }
-            }
-          },
-          404: {
-            description: "Tarea no encontrada"
-          },
-          400: {
-            description: "Error en los datos enviados"
+            description: "Tarea actualizada"
           }
         }
       },
       delete: {
         tags: ["Tasks"],
-        summary: "Eliminar una tarea",
+        summary: "Eliminar tarea",
         parameters: [
           {
             name: "_id",
             in: "path",
             required: true,
-            description: "ID de la tarea a eliminar",
             schema: { type: "string" }
           }
         ],
         responses: {
           204: {
-            description: "Tarea eliminada correctamente"
-          },
-          404: {
-            description: "Tarea no encontrada"
+            description: "Tarea eliminada"
           }
         }
       }
